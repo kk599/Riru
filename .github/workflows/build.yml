@@ -3,10 +3,6 @@
 name: Java CI with Gradle
 
 on:
-    push:
-        branches: [ master ]
-    pull_request:
-        branches: [ master ]
     watch:
         types: [started]
 
@@ -16,7 +12,7 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
             matrix:
-                java: [11, 13]
+                java: [11]
         steps:
             -
                 uses: actions/checkout@v2
@@ -45,4 +41,4 @@ jobs:
                 run: chmod +x gradlew
             -
                 name: Build with Gradle
-                run: ./gradlew clean build -s
+                run: ./gradlew assembleRelease
